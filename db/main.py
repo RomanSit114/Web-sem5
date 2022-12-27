@@ -34,7 +34,7 @@ def get_users():
     conn.commit()
     print(base)
     for i in base:
-        user = {'id': i[0], 'name': i[1], 'surname': i[2]}
+        user = {'id': i[0], 'name': i[1], 'lastname': i[2]}
         data.append(user)
     print(data)
     return jsonify(data)
@@ -69,7 +69,7 @@ def del_user():
 def add_user():
     command = 'INSERT INTO users VALUES (default, %s, %s);'
     name = request.get_json()['name']
-    lastname = request.get_json()['surname']
+    lastname = request.get_json()['lastname']
     cursor.execute(command, (name, lastname))
     conn.commit()
     return jsonify(data)
